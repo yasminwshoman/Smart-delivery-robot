@@ -1,2 +1,15 @@
-# Smart-delivery-robot
- Menu-driven delivery simulator using Queue (LL), Stack, and Linked Lists. Manages requests, cancellations, processing, and logs. Features companion web interface for real-time tracking visualization. Demonstrates OOP, dynamic memory, and workflow automation with practical ADT applications in logistics.
+# Smart Delivery Robot System
+
+## 🚀 Project Overview
+A comprehensive delivery management system featuring:
+- **C++ Backend**: Menu-driven simulator using Queue (LL), Stack, and Linked Lists
+- **Web Interface**: Interactive request management with real-time tracking
+- **Robot Showcase**: KettyBot, Toty, and Semi-outdoor robot demonstrations
+
+## ⚙️ Core Features
+### C++ Backend
+```plaintext
+1. Add/Remove delivery requests
+2. Undo cancellations (Stack implementation)
+3. Process deliveries (Queue - FIFO)
+4. View pending/history logs (Linked Lists)
