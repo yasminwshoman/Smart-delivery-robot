@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)file:///C:/Users/eng.mahmoud.NIH-ENG01/Music/Final%209999/Untitled-1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Delivery Robots</title>
+
+    <link href="./Smart Delivery Robots_files/css2" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            color: #fff;
+            background: transparent;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            object-fit: cover;
+            z-index: -999;
+            opacity: 0.9;
+        }
+
+        .overlay { position: relative; z-index: 1; }
+        section, header {
+            padding: 80px 20px;
+            background: rgba(0, 0, 0, 0.338);
+            background: transparent;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 64px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: auto;
+            margin-bottom: 30px;
+        }
+        .yellow-white-title {
+            font-weight: bold;
+            font-size: 32px;
+            color: #FFD700; /* Yellow */
+            text-shadow: 1px 1px 2px #ffffffac; /* White glow */
+            margin-bottom: 20px;
+        }
+
+
+        .yellow-btn {
+            background-color: #FFD700;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            border-radius: 8px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+
+        .robot-bar {
+            background-color: rgba(255, 215, 0, 0.15);
+            border-left: 6px solid #FFD700;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .robot-bar h2 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff200;
+        }
+
+        .robot-types {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .robot-types img {
+            width: 200px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .robot-types img:hover {
+            transform: scale(1.05);
+        }
+
+        .robot-section {
+            display: none;
+            padding: 80px;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 20px;
+            font-size: 20px;
+            line-height: 1.6;
+            color: #f1f1f1;
+            position: relative;
+        }
+
+        .robot-section video {
+            width: 100%;
+            border-radius: 12px;
+            max-width: 1000px;
+        }
+
+        .detail-bar {
+            background-color: rgba(255, 217, 0, 0.027);
+            border-left: 6px solid #ffd9000e;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+
+        .detail-bar h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd900;
+            margin: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: #f4f4f4;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+            color: #000;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: red;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 8px 0;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .pbar-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+            background-color: transparent;
+        }
+        .pbar-box {
+         
+          background-color: #ffeb3b; /* Yellow background */
+            color: #000;
+            padding: 20px;
+            width: 260px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.422);
+            transition: transform 0.3s;
+        }
+        .pbar-box:hover {
+            transform: translateY(-5px);
+        }
+        .pbar-number {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .pbar-label {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<video id="bg-video" autoplay="" loop="" muted="">
+    <source src="https://cdn.pixabay.com/video/2021/07/06/80444-571948355_small.mp4?download" type="video/mp4">
+</video>
+
+<div class="overlay">
+    <header>
+        <h1>Smart Delivery Robots</h1>
+        <h2>Solving Catering Problems the Smart Way</h2>
+        <p>Say goodbye to manual delivery and make use of industry-leading food delivery robots. Our robots are designed to make food delivery efficient, reliable, and cost-effective for restaurants.</p>
+        <button class="yellow-btn" onclick="openRequestModal()">Manage Your Requests</button>
+    </header>
+
+    <section>
+        <div class="robot-bar">
+            <h2>Choose Your Robot Type</h2>
+        </div>
+
+        <div class="robot-types">
+            <img src="./Smart Delivery Robots_files/OIP.jK76UlRM2PTYXxw0Q7jPjQHaE_" alt="KettyBot" onclick="showKettyBot()">
+            <img src="./Smart Delivery Robots_files/OIP.KFiUPYmCnGVv-k2FK-Y-HgHaGQ" alt="Toty" onclick="showTotyDetails()">
+            <img src="./Smart Delivery Robots_files/OIP.powOgdZK2Qxlc5Kn4n4EDQHaE4" alt="Semi-outdoor Delivery" onclick="showSemiOutdoorDetails()">
+        </div>
+
+        <div id="kettyDetails" class="robot-section" style="display: block;">
+            <button class="close-btn" onclick="hideAllSections()">×</button>
+            <h3 class="yellow-white-title">KettyBot - Delivery &amp; Reception Robot</h3>
+            <video controls="" src="https://cdn.pudutech.com/website/video/kettybot/kettybot_en.mp4"></video>
+            <ul>
+               <li><span style="color: yellow; font-weight: bold;">Smart Tray Detection:</span> 360° lens and tray sensors</li>
+
+                <li><span style="color: yellow; font-weight: bold;">Compact Design:</span> Maneuvers narrow aisles</li>
+                <li><span style="color: yellow; font-weight: bold;">Marketing Display:</span> Built-in screen</li>
+
+            </ul>
+        </div>
+
+        <div id="totyDetails" class="robot-section" style="display: none;">
+            <button class="close-btn" onclick="hideAllSections()">×</button>
+            <h3 class="yellow-white-title">Toty - Cleaning Robot</h3>
+            <video controls="" src="https://cdn.pudutech.com/official-website/pudush/screen01/video_pudush1.mp4"></video>
+            <ul>
+                <li><span style="color: yellow; font-weight: bold;">Instant Scrub:</span> No water residue</li>
+                <span style="color: yellow; font-weight: bold;" <li=""><span style="color: yellow; font-weight: bold;">Powerful:</span> 27 KG brush pressure
+            </span></ul>
+        </div>
+
+        <div id="semiOutdoorDetails" class="robot-section" style="display: none;">
+            <button class="close-btn" onclick="hideAllSections()">×</button>
+            <h3 class="yellow-white-title">Semi-outdoor Delivery Robot</h3>
+            <video controls="" src="https://cdn.pudutech.com/official-website/flashbot_new/banner_video_en_v4.mp4"></video>
+            <ul>
+                <li><span style="color: yellow; font-weight: bold;">Weather-Resistant:</span> Semi-outdoor delivery</li>
+                <li><span style="color: yellow; font-weight: bold;">Urban Routes:</span> Smart route navigation</li>
+
+            </ul>
+        </div>
+    </section>
+</div>
+
+<div id="requestModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRequestModal()">×</span>
+        <h2>Manage Your Requests</h2>
+        <form id="requestForm">
+            <input type="text" id="name" placeholder="Customer Name" required="">
+            <input type="text" id="address" placeholder="Address" required="">
+            <input type="text" id="item" placeholder="Item Description" required="">
+            <button class="yellow-btn" type="submit">Add Request</button>
+        </form>
+        <button class="yellow-btn" onclick="removeRequest()">Remove Request</button>
+        <button class="yellow-btn" onclick="undoCancel()">Undo Cancel</button>
+        <button class="yellow-btn" onclick="deliverNext()">Deliver Next</button>
+        <button class="yellow-btn" onclick="sendEmail()">Send Email to Admin</button>
+
+        <h3>Pending Requests</h3>
+        <ul id="queueList"></ul>
+        <h3>Delivery History</h3>
+        <ul id="historyList"></ul>
+    </div>
+</div>
+
+<div class="pbar-container">
+    <div class="pbar-box">
+        <div class="pbar-number">90,000+</div>
+        <div class="pbar-label">Units Shipped Globally</div>
+    </div>
+    <div class="pbar-box">
+        <div class="pbar-number">1,680+</div>
+        <div class="pbar-label">Global Patents (Including pending patents)</div>
+    </div>
+    <div class="pbar-box">
+        <div class="pbar-number">1,300+</div>
+        <div class="pbar-label">Global Trademark Registrations</div>
+    </div>
+    <div class="pbar-box">
+        <div class="pbar-number">600+</div>
+        <div class="pbar-label">Global Service Centers</div>
+    </div>
+    <div class="pbar-box">
+        <div class="pbar-number">60+</div>
+        <div class="pbar-label">Countries and Regions Covered</div>
+    </div>
+    <div class="pbar-box">
+        <div class="pbar-number">600+</div>
+        <div class="pbar-label">Cities Covered</div>
+    </div>
+</div>
+
+<script>
+    const queue = [];
+    const history = [];
+    let lastRemoved = null;
+
+    function openRequestModal() {
+        document.getElementById("requestModal").style.display = "block";
+    }
+
+    function closeRequestModal() {
+        document.getElementById("requestModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target === document.getElementById("requestModal")) {
+            closeRequestModal();
+        }
+    };
+
+    document.getElementById("requestForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const item = document.getElementById("item").value;
+        if (name && address && item) {
+            queue.push({ name, address, item });
+            this.reset();
+            updateDisplay();
+        }
+    });
+
+    function removeRequest() {
+        if (queue.length > 0) {
+            lastRemoved = queue.pop();
+            updateDisplay();
+        } else alert("No requests to remove.");
+    }
+
+    function undoCancel() {
+        if (lastRemoved) {
+            queue.push(lastRemoved);
+            lastRemoved = null;
+            updateDisplay();
+        } else alert("No action to undo.");
+    }
+
+    function deliverNext() {
+        if (queue.length > 0) {
+            const next = queue.shift();
+            history.push(next);
+            updateDisplay();
+        } else alert("No requests in queue.");
+    }
+
+    function updateDisplay() {
+        const queueList = document.getElementById("queueList");
+        const historyList = document.getElementById("historyList");
+        queueList.innerHTML = "";
+        historyList.innerHTML = "";
+        queue.forEach((req, i) => {
+            queueList.innerHTML += `<li>${i + 1}. ${req.name} - ${req.item} to ${req.address}</li>`;
+        });
+        history.forEach((req, i) => {
+            historyList.innerHTML += `<li>${i + 1}. ${req.name} - ${req.item} delivered to ${req.address}</li>`;
+        });
+    }
+
+    function hideAllSections() {
+      document.querySelectorAll('.robot-section').forEach(el => el.style.display = 'none');
+  }
+
+    function showKettyBot() {
+        hideAllSections();
+        document.getElementById("kettyDetails").style.display = "block";
+    }
+
+    function showTotyDetails() {
+        hideAllSections();
+        document.getElementById("totyDetails").style.display = "block";
+    }
+
+    function showSemiOutdoorDetails() {
+        hideAllSections();
+        document.getElementById("semiOutdoorDetails").style.display = "block";
+    }
+
+    function sendEmail() {
+        const subject = encodeURIComponent("Smart Delivery Robot Request");
+        const body = encodeURIComponent("Hello,\n\nPlease review the current delivery requests.\n\nBest regards,\n[Your Name]");
+        window.location.href = `mailto:yasminemahmood6@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    updateDisplay();
+</script>
+
+
+</body></html>
